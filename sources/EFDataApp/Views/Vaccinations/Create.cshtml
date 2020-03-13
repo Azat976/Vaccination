@@ -1,0 +1,45 @@
+﻿@model EFDataApp.Models.Vaccination
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание вакцины</h1>
+
+<h4>Vaccination</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div>
+                <label asp-for="PatientId"></label>
+                <select asp-for="PatientId" asp-items="ViewBag.Patients"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pils" class="control-label">Препарат</label>
+                <input asp-for="Pils" class="form-control" />
+                <span asp-validation-for="Pils" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HaveVaccination" />Наличие согласия
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="VaccinationDate" class="control-label">Дата вакцинации</label>
+                <input asp-for="VaccinationDate" class="form-control" />
+                <span asp-validation-for="VaccinationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+

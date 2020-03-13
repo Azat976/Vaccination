@@ -1,0 +1,51 @@
+﻿@model EFDataApp.Models.Patient
+@{
+    ViewBag.Title = "Добавление пациента";
+}
+
+
+<form asp-action="create" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Family" class="control-label">Фамилия</label>
+        <input type="text" asp-for="Family" class="form-control" />
+        <span asp-validation-for="Family" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" />
+    </div>
+
+    <div class="form-group">
+            @Html.LabelFor(model => model.Birth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Birth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    @*<div class="col-md-6 col-xs-6 pull-left">
+        <label asp-for="@Model.Birth"></label>
+        <div class="input-group date">
+            <input type="text" asp-for="@Model.Birth" class="form-control js-datepicker pull-left" />
+            <div class="input-group-append">
+                <span class="input-group-text calendar-fa"></span>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <label asp-for="Gender" class="control-label">Пол</label>
+        <input type="text" asp-for="Gender" class="form-control" />
+        <span asp-validation-for="Gender" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Snils" class="control-label">Снилс</label>
+        <input type="number" asp-for="Snils" class="form-control" />
+        <span asp-validation-for="Snils" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+</form>
+

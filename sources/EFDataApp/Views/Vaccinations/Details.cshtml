@@ -1,0 +1,24 @@
+﻿@model EFDataApp.Models.Vaccination
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Вакцина</h1>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Вакцина</dt>
+        <dd>@Model.Pils</dd>
+
+        <dt>Наличие согласия</dt>
+        <dd>@Model.HaveVaccination</dd>
+
+        <dt>Дата вакцинации</dt>
+        <dd>@Model.VaccinationDate</dd>
+
+    </dl>
+</div>
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Назад</a>
+</div>*@

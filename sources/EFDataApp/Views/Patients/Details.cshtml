@@ -1,0 +1,63 @@
+﻿@model EFDataApp.Models.Patient
+@{
+    ViewBag.Title = Model.Family;
+}
+<h2>Пациент @Model.Family</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Имя</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Возраст</dt>
+        <dd>@Model.Birth</dd>
+
+        <dt>Пол</dt>
+        <dd>@Model.Gender</dd>
+
+        <dt>Снилс</dt>
+        <dd>@Model.Snils</dd>
+    </dl>
+</div>
+
+@if (Model.Vaccinations != null)
+{
+    <h3>
+        Вакцины пациента
+    </h3>
+    <p>
+        <a asp-controller="Vaccinations" asp-action="Create">Добавить вакцину</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>Вакцины</th>
+            <th>Наличие на согласие</th>
+            <th>Дата вакцинации</th>
+
+        </tr>
+        @foreach (var item in Model.Vaccinations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pils)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HaveVaccination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VaccinationDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Vaccinations" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Details" asp-controller="Vaccinations" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-action="Delete" asp-controller="Vaccinations" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Назад</a>
+</div>
+@*</body>
+</html>*@

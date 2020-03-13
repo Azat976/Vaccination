@@ -1,0 +1,51 @@
+﻿@model EFDataApp.Models.PatientListViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список пациентов</h1>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <a asp-action="Create">Добавить пользователя</a>
+        <label class="control-label">Фамилия Имя, СНИЛС: </label>
+        <input name="SearchString" class="form-control" />
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Дата рождения</th>
+        <th>Пол</th>
+        <th>Снилс</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model.Patients)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Family)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Snils)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
